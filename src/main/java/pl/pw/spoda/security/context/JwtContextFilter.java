@@ -25,6 +25,11 @@ public class JwtContextFilter extends OncePerRequestFilter {
             HttpServletResponse response,
             FilterChain filterChain
     ) throws ServletException, IOException {
+        if ("OPTIONS".equalsIgnoreCase(request.getMethod())) {
+            response.setStatus(HttpServletResponse.SC_OK);
+            return;
+        }
+
         String header = request.getHeader( "Authorization" );
 
         if (header != null && jwtService.validateToken( header )) {
