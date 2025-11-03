@@ -15,7 +15,7 @@ import java.util.Base64;
 
 @Service
 @Slf4j
-class JwtService {
+public class JwtService {
 
     @Value("${jwt.secret}")
     private String jwtSecret;
@@ -31,7 +31,7 @@ class JwtService {
         log.info( "JwtService initialized" );
     }
 
-    boolean validateToken(String token) {
+    public boolean validateToken(String token) {
         try {
             verifier.verify( unwrapToken( token ) );
             return true;
@@ -43,7 +43,7 @@ class JwtService {
         return false;
     }
 
-    SpodaApplicationContext extractContext(String token) {
+    public SpodaApplicationContext extractContext(String token) {
         DecodedJWT jwt = verifier.verify( unwrapToken( token ) );
         return SpodaApplicationContext.builder()
                 .username( jwt.getClaim( "username" ).asString() )
@@ -52,7 +52,7 @@ class JwtService {
                 .build();
     }
 
-    String unwrapToken(String token) {
+    public String unwrapToken(String token) {
         if (token == null || token.isBlank()) throw new IllegalArgumentException( "Token is null or blank" );
         return token.trim().replaceFirst( "(?i)^Bearer\\s+", "" );
     }
