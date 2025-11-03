@@ -10,7 +10,8 @@ public enum Role {
     ADMIN( "Prezes", 100 ),
     MODERATOR( "Wiceprezes", 50 ),
     MAINTAINER( "Baron", 30 ),
-    VIEWER( "Działacz", 10 );
+    VIEWER( "Działacz", 10 ),
+    PUBLIC("Śpoders",1);
 
     private final String title;
     private final int level;

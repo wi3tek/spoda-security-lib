@@ -7,7 +7,7 @@ import java.util.List;
 
 @Data
 @Builder
-public class ApplicationContext {
+public class SpodaApplicationContext {
     private String username;
     private String discordId;
     private List<Role> roleList;

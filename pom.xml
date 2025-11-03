@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>pl.pw.spoda.security</groupId>
 	<artifactId>spoda-security-lib</artifactId>
-	<version>1.0.5</version>
+	<version>1.0.6</version>
     <packaging>jar</packaging>
 	<name>spoda-security-lib</name>
 	<description>Library for handling authorities for ks-spoda app</description>

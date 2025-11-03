@@ -7,5 +7,5 @@ import lombok.Getter;
 @AllArgsConstructor
 public class ContextPrincipal {
 
-    private final ApplicationContext context;
+    private final SpodaApplicationContext context;
 }

@@ -8,7 +8,7 @@ import java.security.Principal;
 @Component
 public class ContextExtractor {
 
-    public ApplicationContext fromPrincipal(Principal principal) {
+    public SpodaApplicationContext fromPrincipal(Principal principal) {
         if (principal instanceof Authentication auth &&
                 auth.getPrincipal() instanceof ContextPrincipal ctxPrincipal) {
             return ctxPrincipal.getContext();

@@ -10,7 +10,7 @@ import jakarta.annotation.PostConstruct;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import pl.pw.spoda.security.context.ApplicationContext;
+import pl.pw.spoda.security.context.SpodaApplicationContext;
 import pl.pw.spoda.security.context.Role;
 
 import java.util.Base64;
@@ -45,9 +45,9 @@ public class JwtService {
         return false;
     }
 
-    public ApplicationContext extractContext(String token) {
+    public SpodaApplicationContext extractContext(String token) {
         DecodedJWT jwt = verifier.verify( unwrapToken( token ) );
-        return ApplicationContext.builder()
+        return SpodaApplicationContext.builder()
                 .username( jwt.getClaim( "username" ).asString() )
                 .discordId( jwt.getClaim( "discord_id" ).asString() )
                 .roleList( jwt.getClaim( "roles" ).asList( String.class ).stream().map( Role::getByTitle ).toList() )

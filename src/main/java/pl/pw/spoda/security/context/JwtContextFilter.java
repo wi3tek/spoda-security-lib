@@ -29,7 +29,7 @@ public class JwtContextFilter extends OncePerRequestFilter {
         String header = request.getHeader( "Authorization" );
 
         if (header != null && jwtService.validateToken( header )) {
-            ApplicationContext ctx = jwtService.extractContext( header );
+            SpodaApplicationContext ctx = jwtService.extractContext( header );
             ContextPrincipal principal = new ContextPrincipal( ctx );
 
             UsernamePasswordAuthenticationToken auth =
