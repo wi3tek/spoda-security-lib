@@ -1,4 +1,4 @@
-package pl.pw.spoda.security.service;
+package pl.pw.spoda.security.context;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
@@ -10,14 +10,12 @@ import jakarta.annotation.PostConstruct;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import pl.pw.spoda.security.context.SpodaApplicationContext;
-import pl.pw.spoda.security.context.Role;
 
 import java.util.Base64;
 
 @Service
 @Slf4j
-public class JwtService {
+class JwtService {
 
     @Value("${jwt.secret}")
     private String jwtSecret;
@@ -33,7 +31,7 @@ public class JwtService {
         log.info( "JwtService initialized" );
     }
 
-    public boolean validateToken(String token) {
+    boolean validateToken(String token) {
         try {
             verifier.verify( unwrapToken( token ) );
             return true;
@@ -45,7 +43,7 @@ public class JwtService {
         return false;
     }
 
-    public SpodaApplicationContext extractContext(String token) {
+    SpodaApplicationContext extractContext(String token) {
         DecodedJWT jwt = verifier.verify( unwrapToken( token ) );
         return SpodaApplicationContext.builder()
                 .username( jwt.getClaim( "username" ).asString() )
@@ -54,7 +52,7 @@ public class JwtService {
                 .build();
     }
 
-    public String unwrapToken(String token) {
+    String unwrapToken(String token) {
         if (token == null || token.isBlank()) throw new IllegalArgumentException( "Token is null or blank" );
         return token.trim().replaceFirst( "(?i)^Bearer\\s+", "" );
     }

@@ -16,14 +16,14 @@ public enum Role {
     private final String title;
     private final int level;
 
-    public static Role getByTitle(String roleTitle) {
+    static Role getByTitle(String roleTitle) {
         return Arrays.stream( values() )
                 .filter( role -> role.title.equals( roleTitle ) )
                 .findFirst()
                 .orElseThrow( () -> new IllegalArgumentException( "There is no role with title: " + roleTitle ) );
     }
 
-    public boolean isAtLeast(Role required) {
+    boolean isAtLeast(Role required) {
         return this.level >= required.level;
     }
 
