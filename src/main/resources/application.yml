@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: spoda-security-lib
+
+jwt:
+  secret: ${JWT_SECRET:?JWT_SECRET is required}
