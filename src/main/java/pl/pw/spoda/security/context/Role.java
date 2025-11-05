@@ -7,11 +7,12 @@ import java.util.Arrays;
 @RequiredArgsConstructor
 public enum Role {
 
-    ADMIN( "Prezes", 100 ),
-    MODERATOR( "Wiceprezes", 50 ),
-    MAINTAINER( "Baron", 30 ),
-    VIEWER( "Działacz", 10 ),
-    PUBLIC("Śpoders",1);
+    PRESIDENT( "Prezes", 100 ),
+    VICE_PRESIDENT( "Wiceprezes", 50 ),
+    DELEGATE( "Delegat", 30 ),
+    COORDINATOR("Koordynator", 20),
+    OBSERVER( "Działacz", 10 ),
+    REPRESENTATIVE("Śpoders",1);
 
     private final String title;
     private final int level;

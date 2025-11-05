@@ -1,11 +1,5 @@
 package pl.pw.spoda.security.context;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
+public record ContextPrincipal(SpodaApplicationContext context) {
 
-@Getter
-@AllArgsConstructor
-public class ContextPrincipal {
-
-    private final SpodaApplicationContext context;
 }

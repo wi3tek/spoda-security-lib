@@ -8,11 +8,10 @@ import java.security.Principal;
 @Component
 public class ContextExtractor {
 
-    public SpodaApplicationContext fromPrincipal(Principal principal) {
-        if (principal instanceof Authentication auth &&
-                auth.getPrincipal() instanceof ContextPrincipal ctxPrincipal) {
-            return ctxPrincipal.getContext();
+    public SpodaApplicationContext fromPrincipal(Principal principal) throws NoAccessException {
+        if (principal instanceof Authentication auth && auth.getPrincipal() instanceof ContextPrincipal(SpodaApplicationContext context)) {
+            return context;
         }
-        throw new IllegalStateException("Invalid principal type: " + principal);
+        throw new NoAccessException( String.format( "Access denied [principal = %s]", principal ) );
     }
 }
