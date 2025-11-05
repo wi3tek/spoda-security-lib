@@ -11,4 +11,6 @@ public class SpodaApplicationContext {
     private String username;
     private String discordId;
     private List<Role> roleList;
+    private String displayName;
+    private String avatar;
 }

@@ -49,6 +49,8 @@ public class JwtService {
                 .username( jwt.getClaim( "username" ).asString() )
                 .discordId( jwt.getClaim( "discord_id" ).asString() )
                 .roleList( jwt.getClaim( "roles" ).asList( String.class ).stream().map( Role::getByTitle ).toList() )
+                .displayName( jwt.getClaim( "display_name" ).asString() )
+                .avatar( jwt.getClaim( "avatar" ).asString() )
                 .build();
     }
 
